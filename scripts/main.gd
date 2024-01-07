@@ -1,5 +1,5 @@
-extends Area2D
-@onready var player=$"."
+extends Node2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,6 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print( get_viewport().get_mouse_position() )
-	player.position.x = get_viewport().get_mouse_position().x
-	player.position.y = get_viewport().get_mouse_position().y
+	pass
