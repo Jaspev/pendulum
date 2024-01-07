@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://colgvcmrxmljc"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_q74qc"]
+[ext_resource type="Script" path="res://scripts/title.gd" id="2_qib4r"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_q74qc")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("2_qib4r")
+
+[node name="leftcolumn" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="button_start" type="Button" parent="CenterContainer/HBoxContainer/leftcolumn"]
+layout_mode = 2
+text = "start"
+
+[node name="button_quit" type="Button" parent="CenterContainer/HBoxContainer/leftcolumn"]
+layout_mode = 2
+text = "quit"
+
+[node name="rightcolumn" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreen" type="HBoxContainer" parent="CenterContainer/HBoxContainer/rightcolumn"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="CenterContainer/HBoxContainer/rightcolumn/fullscreen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/rightcolumn/fullscreen"]
+layout_mode = 2
+text = "fullscreen"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/leftcolumn/button_start" to="CenterContainer/HBoxContainer" method="_on_button_start_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/leftcolumn/button_quit" to="CenterContainer/HBoxContainer" method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/rightcolumn/fullscreen/CheckBox" to="CenterContainer/HBoxContainer" method="_on_check_box_pressed"]

@@ -31,6 +31,7 @@ script = ExtResource("1_l21vc")
 
 [node name="Player" type="Area2D" parent="."]
 script = ExtResource("2_r6hf7")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_mxh15")
@@ -42,8 +43,9 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_3akt5")
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(200, 100)
+position = Vector2(154, 101)
 script = ExtResource("5_ivptq")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("4_mfrle")
@@ -53,8 +55,9 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_newrt")
 
 [node name="Enemy2" type="CharacterBody2D" parent="."]
-position = Vector2(224, 117)
+position = Vector2(193, 80)
 script = ExtResource("5_ivptq")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
 texture = ExtResource("4_mfrle")
@@ -64,8 +67,9 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_newrt")
 
 [node name="Enemy3" type="CharacterBody2D" parent="."]
-position = Vector2(177, 100)
+position = Vector2(194, 110)
 script = ExtResource("5_ivptq")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy3"]
 texture = ExtResource("4_mfrle")
@@ -75,8 +79,9 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_newrt")
 
 [node name="Enemy4" type="CharacterBody2D" parent="."]
-position = Vector2(177, 117)
+position = Vector2(163, 133)
 script = ExtResource("5_ivptq")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy4"]
 texture = ExtResource("4_mfrle")
