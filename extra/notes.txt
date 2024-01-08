@@ -1,0 +1,80 @@
+superflail ripoff https://store.steampowered.com/app/891130/SUPER_FLAIL/
+
+game where you have a double pendulum attached to your cursor
+you have to swing your cursor to swing pendulum
+enemies come in from edges of screen
+if enemies hit cursor you lose health
+background reactive with pendulum (liquid)?
+when kill enemies you get money
+after x amount of enemies there's a boss
+after boss there's a shop
+start with ball get upgrades at shop to upgrade ball
+closest pendulum point to character does less damage
+
+enemies
+	enemy that just moves towards you
+	enemy that shoots you
+	enemies that bounce off eachother (will spawn in groups)
+	slime enemy (when killed breaks into smaller enemies)
+	british man
+
+upgrades
+	make ball spiky (more damage)
+	make first ball on pendulum spiky (originally doesn't do damage)
+	add another ball to big ball
+	when ball hit thing something happen (spikes shoot out or something)
+	if you name bailey you are gay
+	make pendulum balls bigger
+	press z to drop pendulums that keep spinning
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+faces on screen that's it it's just faces on the screen
