@@ -1,0 +1,6 @@
+in order of importance
+
+pendulum for player
+enemies spawn randomly offscreen on a timer
+ui for currency
+enemies drop currency

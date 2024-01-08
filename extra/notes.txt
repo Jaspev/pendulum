@@ -11,11 +11,24 @@ after boss there's a shop
 start with ball get upgrades at shop to upgrade ball
 closest pendulum point to character does less damage
 
+HOW THE GAME WILL WORK:
+	CLICK START, SPAWN IN EMPTY SCENE.
+	GIVE PLAYER ENOUGH TIME TO LEARN HOW TO USE PENDULUM (FEW SECONDS).
+	ENEMIES START SPAWNING FROM EDGES OF SCREEN.
+	EACH ENEMY KILLED GIVES A CERTAIN AMOUNT OF POINTS (NOT VISIBLE TO PLAYER).
+	NORMAL ENEMIES GIVE 1 POINT, HARDER ENEMIES GIVE MORE POINTS.
+	EACH ENEMY KILLED ALSO RANDOMLY DROPS CURRENCY THAT IS VISIBLE TO PLAYER THAT WILL BE USED ON UPGRADES.
+	HARDER ENEMIES HAVE HIGHER CHANCE TO DROP CURRENCY, CAN DROP 2-3 CURRENCY.
+	AFTER 10 POINTS, START SPAWNING HARDER ENEMIES.
+	AFTER 20 TOTAL POINTS, STOP SPAWNING NEW ENEMIES AND WHEN ALL ENEMIES ARE KILLED SPAWN BOSS.
+	AFTER BOSS IS KILLED HAVE SHOP GUY SPAWN OR SOMETHING AND LET PLAYER USE CURRENCY FOR UPGRADES.
+
 enemies
 	enemy that just moves towards you
 	enemy that shoots you
+	enemy with homing bullets
 	enemies that bounce off eachother (will spawn in groups)
-	slime enemy (when killed breaks into smaller enemies)
+	slime enemy (when killed breaks into smaller enemies, smaller enemies have less health but move faster)
 	british man
 
 upgrades
