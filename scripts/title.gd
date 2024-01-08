@@ -1,9 +1,17 @@
-extends HBoxContainer
+extends CenterContainer
 
-@onready var check_box = $rightcolumn/fullscreen/CheckBox
+@onready var check_box = $column/check_fullscreen/CheckBox
+
+func _input(event):
+	#make sure if f11 is pressed on menu, update fullscreen checkbox
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+		check_box.button_pressed = true
+	else:
+		check_box.button_pressed = false
 
 func _on_button_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_button_quit_pressed():
 	get_tree().quit()

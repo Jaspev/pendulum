@@ -1,10 +1,4 @@
-extends Node2D
-
-func _ready():
-	pass 
-	
-func _process(delta):
-	pass
+extends Node
 
 func _input(event):
 	if event.is_action_pressed("fullscreen"): # f11 fullscreens
