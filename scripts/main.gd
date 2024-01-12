@@ -5,7 +5,7 @@ extends Node2D
 @onready var viewport_size = get_viewport_rect().size
 
 func _ready():
-	timer.wait_time = 1.0
+	timer.wait_time = 5.0
 	timer.autostart = true
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
