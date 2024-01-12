@@ -26,7 +26,7 @@ metadata/_edit_group_ = true
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_3akt5")
 
-[node name="player2" type="RigidBody2D" parent="."]
+[node name="Ball" type="RigidBody2D" parent="."]
 mass = 2.5
 gravity_scale = 0.05
 inertia = 3.58
@@ -35,10 +35,10 @@ angular_velocity = 0.0872665
 constant_force = Vector2(1, 1)
 script = ExtResource("5_xflm8")
 
-[node name="Sprite2D" type="Sprite2D" parent="player2"]
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
 texture = ExtResource("5_hx6od")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_eqp2q")
 
@@ -54,7 +54,7 @@ shape = SubResource("CircleShape2D_eqp2q")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="CharacterBody2D"]
 node_a = NodePath("..")
-node_b = NodePath("../../player2")
+node_b = NodePath("../../Ball")
 bias = 0.357
 length = 5.0
 stiffness = 64.0
