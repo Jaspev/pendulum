@@ -2,6 +2,7 @@ extends Node2D
 @onready var timer = Timer.new()
 @onready var rng = RandomNumberGenerator.new()
 @onready var enemy01 = preload("res://scenes/enemy01.tscn")
+@onready var enemy02 = preload("res://scenes/enemy02.tscn")
 @onready var viewport_size = get_viewport_rect().size
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 	
 func _on_timer_timeout():
 	var instanced_enemy01 = enemy01.instantiate()
+	var instanced_enemy02 = enemy02.instantiate()
 	var coin
 	var pos_x
 	var pos_y
@@ -47,7 +49,13 @@ func _on_timer_timeout():
 	
 	var rand_pos = Vector2(pos_x,pos_y)
 	
-	instanced_enemy01.position = rand_pos
-	
-	print("enemy01 spawned @ ", rand_pos)
-	add_child(instanced_enemy01)
+	randomize()
+	coin = rng.randf_range(-1,1)
+	if coin >= 0: #IF POSITIVE, SPAWN ENEMY01, ELSE SPAWN ENEMY02
+		instanced_enemy01.position = rand_pos
+		add_child(instanced_enemy01)
+		print("enemyspawned01 @ ", rand_pos)
+	else:
+		instanced_enemy02.position = rand_pos
+		add_child(instanced_enemy02)
+		print("enemyspawned02 @ ", rand_pos)

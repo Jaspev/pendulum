@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
-var speed = 50
+var speed = 25
 var hp = 2
 	
 func _physics_process(delta):
