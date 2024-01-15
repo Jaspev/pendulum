@@ -1,9 +1,9 @@
 extends CenterContainer
 
-@onready var check_box = $column/check_fullscreen/CheckBox
+@onready var check_box = $VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckBox
 
-func _input(event):
-	#make sure if f11 is pressed on menu, update fullscreen checkbox
+func _input(_event):
+	#make sure if window is fullscreen, update fullscreen checkbox
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 		check_box.button_pressed = true
 	else:
