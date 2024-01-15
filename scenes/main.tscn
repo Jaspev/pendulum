@@ -1,60 +1,90 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=14 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="2_r6hf7"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
 [ext_resource type="Texture2D" uid="uid://3pta6ol70klt" path="res://art/guy1.png" id="3_fkjpx"]
+[ext_resource type="Script" path="res://scripts/flailsmall.gd" id="4_h76mi"]
+[ext_resource type="Texture2D" uid="uid://gs7g0nk4pw6l" path="res://art/ballsmall.png" id="5_ff0dw"]
 [ext_resource type="Texture2D" uid="uid://x1d3ip4r3cfj" path="res://art/ballbig.png" id="5_hx6od"]
-[ext_resource type="Script" path="res://scripts/player2.gd" id="5_xflm8"]
-[ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="6_txgjc"]
+[ext_resource type="Script" path="res://scripts/flailbig.gd" id="6_hb3ow"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3akt5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrugw"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kar50"]
+radius = 2.23607
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj8om"]
+radius = 2.23607
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0c4km"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eqp2q"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hce24"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dfvx"]
+radius = 15.1327
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_2j1ml")
 
-[node name="Player" type="Area2D" parent="."]
-script = ExtResource("2_r6hf7")
-metadata/_edit_group_ = true
+[node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_wd24r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_fkjpx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_3akt5")
+shape = SubResource("CircleShape2D_rrugw")
 
-[node name="Ball" type="RigidBody2D" parent="."]
-mass = 2.5
-gravity_scale = 0.05
-inertia = 3.58
-linear_damp = 2.672
-angular_velocity = 0.0872665
-constant_force = Vector2(1, 1)
-script = ExtResource("5_xflm8")
+[node name="PinJoint2D" type="PinJoint2D" parent="Player"]
+node_a = NodePath("..")
+node_b = NodePath("../../flailballsmall")
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+[node name="flailballsmall" type="RigidBody2D" parent="."]
+position = Vector2(0, 26)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_h76mi")
+
+[node name="Sprite2D" type="Sprite2D" parent="flailballsmall"]
+texture = ExtResource("5_ff0dw")
+
+[node name="dontusethiscollsion" type="CollisionShape2D" parent="flailballsmall"]
+shape = SubResource("CircleShape2D_kar50")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="flailballsmall"]
+node_a = NodePath("..")
+node_b = NodePath("../../flailballbig")
+
+[node name="flailballbig" type="RigidBody2D" parent="."]
+position = Vector2(0, 60)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("6_hb3ow")
+
+[node name="Sprite2D" type="Sprite2D" parent="flailballbig"]
 texture = ExtResource("5_hx6od")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+[node name="dontusethiscollsion" type="CollisionShape2D" parent="flailballbig"]
+shape = SubResource("CircleShape2D_xj8om")
+
+[node name="playerArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerArea2D"]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_eqp2q")
+shape = SubResource("CircleShape2D_0c4km")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("6_txgjc")
+[node name="flailballsmallArea2D" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("3_fkjpx")
+[node name="flailballsmallrealcollision" type="CollisionShape2D" parent="flailballsmallArea2D"]
+shape = SubResource("CircleShape2D_hce24")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_eqp2q")
+[node name="flailballbigArea2D" type="Area2D" parent="."]
 
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="CharacterBody2D"]
-node_a = NodePath("..")
-node_b = NodePath("../../Ball")
-bias = 0.357
-length = 5.0
-stiffness = 64.0
+[node name="flailballbigrealcollision" type="CollisionShape2D" parent="flailballbigArea2D"]
+shape = SubResource("CircleShape2D_8dfvx")

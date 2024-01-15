@@ -1,5 +1,7 @@
-extends Area2D
+extends CharacterBody2D
+
 @onready var viewport_size = get_viewport_rect().size
+@onready var collision = $"../playerArea2D/CollisionShape2D"
 
 func _ready():
 	pass
@@ -9,6 +11,8 @@ func _process(delta):
 	var cursor_pos_y = snapped(get_viewport().get_mouse_position().y, 1) - 0.5 # and -0.5 to fix visual bug.
 	var cursor_pos_snapped = Vector2(cursor_pos_x, cursor_pos_y)
 	position = cursor_pos_snapped
+	
+	collision.position = position # lock area2D collision to player
 	
 	# player position cannot be more than viewport bounds
 	if position.x >= viewport_size.x:

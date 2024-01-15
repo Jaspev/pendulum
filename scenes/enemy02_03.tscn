@@ -1,20 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://7simkpl7t01o"]
+[gd_scene load_steps=4 format=3 uid="uid://bk6e6qku2njfy"]
 
-[ext_resource type="Script" path="res://scripts/enemy01.gd" id="1_7tsa3"]
-[ext_resource type="Texture2D" uid="uid://b4ovwxfoej888" path="res://art/guy2.png" id="2_bcelx"]
+[ext_resource type="Script" path="res://scripts/enemy02_03.gd" id="1_qqgam"]
+[ext_resource type="Texture2D" uid="uid://dumeu42m546pw" path="res://art/slime03.png" id="2_o6oen"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
-radius = 7.0
+radius = 6.0
 
-[node name="Enemy01" type="CharacterBody2D"]
-script = ExtResource("1_7tsa3")
+[node name="Enemy02_03" type="CharacterBody2D"]
+script = ExtResource("1_qqgam")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bcelx")
+texture = ExtResource("2_o6oen")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_newrt")
 
 [node name="hp" type="Label" parent="."]
