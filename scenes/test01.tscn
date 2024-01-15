@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://tjae1f23wypn"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_1uven"]
+[ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_xbale"]
+[ext_resource type="Texture2D" uid="uid://3pta6ol70klt" path="res://art/guy1.png" id="2_0s5po"]
+[ext_resource type="Texture2D" uid="uid://gs7g0nk4pw6l" path="res://art/ballsmall.png" id="3_31ucc"]
+[ext_resource type="Texture2D" uid="uid://x1d3ip4r3cfj" path="res://art/ballbig.png" id="3_wnimh"]
+[ext_resource type="Script" path="res://scripts/fixrotation.gd" id="5_qkms3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiklk"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1d5r"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eljwg"]
+radius = 16.0
+
+[node name="Test01" type="Node2D"]
+script = ExtResource("1_1uven")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xbale")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_0s5po")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_jiklk")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Player"]
+node_a = NodePath("..")
+node_b = NodePath("../../flailballsmall")
+
+[node name="flailballsmall" type="RigidBody2D" parent="."]
+position = Vector2(0, 26)
+gravity_scale = 0.0
+script = ExtResource("5_qkms3")
+
+[node name="Sprite2D" type="Sprite2D" parent="flailballsmall"]
+texture = ExtResource("3_31ucc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flailballsmall"]
+shape = SubResource("CircleShape2D_e1d5r")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="flailballsmall"]
+node_a = NodePath("..")
+node_b = NodePath("../../flailballbig")
+
+[node name="flailballbig" type="RigidBody2D" parent="."]
+position = Vector2(0, 60)
+gravity_scale = 0.0
+script = ExtResource("5_qkms3")
+
+[node name="Sprite2D" type="Sprite2D" parent="flailballbig"]
+texture = ExtResource("3_wnimh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flailballbig"]
+shape = SubResource("CircleShape2D_eljwg")

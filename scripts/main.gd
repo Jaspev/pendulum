@@ -20,28 +20,28 @@ func _on_timer_timeout():
 	
 	randomize() #LIFE IS PAIN i don't think i need to call randomize this much but there's no harm it it... probably
 	coin = rng.randf_range(-1,1)
-	if coin >= 0: #IF POSITIVE, SPAWN ENEMY ON EITHER LEFT OF RIGHT
+	if coin >= 0: #IF POSITIVE, SET ENEMY POS ON EITHER LEFT OF RIGHT
 		randomize()
 		coin = rng.randf_range(-1,1)
-		if coin >= 0: #IF POSITIVE, SPAWN ENEMY ON LEFT
+		if coin >= 0: #IF POSITIVE, SET ENEMY POS ON LEFT
 			randomize()
 			pos_x = rng.randf_range(-50,-10)
 			randomize()
 			pos_y = rng.randf_range(-50,viewport_size.y+50)
-		else: #IF NEGATIVE, SPAWN ENEMY ON RIGHT
+		else: #IF NEGATIVE, SET ENEMY POS ON RIGHT
 			randomize()
 			pos_x = rng.randf_range(viewport_size.x+10,viewport_size.x+50)
 			randomize()
 			pos_y = rng.randf_range(-50,viewport_size.y+50)
-	else: #IF NEGATIVE, SPAWN ENEMY ON EITHER TOP OR BOTTOM
+	else: #IF NEGATIVE, SET ENEMY POS ON EITHER TOP OR BOTTOM
 		randomize()
 		coin = rng.randf_range(-1,1)
-		if coin >= 0: #IF POSITIVE, SPAWN ENEMY ON TOP
+		if coin >= 0: #IF POSITIVE, SET ENEMY POS ON TOP
 			randomize()
 			pos_x = rng.randf_range(-50,viewport_size.x+50)
 			randomize()
 			pos_y = rng.randf_range(-50,-10)
-		else: #IF NEGATIVE, SPAWN ENEMY ON BOTTOM
+		else: #IF NEGATIVE, SET ENEMY POS ON BOTTOM
 			randomize()
 			pos_x = rng.randf_range(-50,viewport_size.x+50)
 			randomize()
