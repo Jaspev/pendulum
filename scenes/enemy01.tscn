@@ -1,20 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://7simkpl7t01o"]
 
 [ext_resource type="Script" path="res://scripts/enemy01.gd" id="1_7tsa3"]
-[ext_resource type="Texture2D" uid="uid://b4ovwxfoej888" path="res://art/guy2.png" id="2_bcelx"]
+[ext_resource type="Texture2D" uid="uid://b44ry4tw48r7q" path="res://art/skull.png" id="2_rtac4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 7.0
 
 [node name="Enemy01" type="CharacterBody2D"]
 script = ExtResource("1_7tsa3")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bcelx")
+texture = ExtResource("2_rtac4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_newrt")
 
 [node name="hp" type="Label" parent="."]

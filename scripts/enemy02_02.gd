@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy02_03 = preload("res://scenes/enemy02_03.tscn")
+@onready var parent_node = get_parent()
 var speed = 50
 var hp = 4
 
@@ -18,9 +19,11 @@ func _physics_process(delta):
 	if hp == 0: #if killed, spawn 2 enemy02_03's
 		print("enemy02_02 killed")
 		var instanced_enemy02_03 = enemy02_03.instantiate()
-		instanced_enemy02_03.position = position
-		add_child(instanced_enemy02_03)
-		add_child(instanced_enemy02_03)
+		instanced_enemy02_03.position.y = position.y
+		instanced_enemy02_03.position.x = position.x + 1
+		parent_node.add_child(instanced_enemy02_03)
+		instanced_enemy02_03.position.x = position.x - 1
+		parent_node.add_child(instanced_enemy02_03)
 		queue_free()
 	
 	#DEBUG
