@@ -1,12 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=18 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
-[ext_resource type="Texture2D" uid="uid://3pta6ol70klt" path="res://art/guy1.png" id="3_fkjpx"]
+[ext_resource type="Texture2D" uid="uid://ddybu7v4nwrg7" path="res://art/guy01.png" id="3_evmqc"]
 [ext_resource type="Script" path="res://scripts/flailsmall.gd" id="4_h76mi"]
+[ext_resource type="Texture2D" uid="uid://bnwyk3nqud0m" path="res://art/guy02.png" id="4_xqmx3"]
 [ext_resource type="Texture2D" uid="uid://gs7g0nk4pw6l" path="res://art/ballsmall.png" id="5_ff0dw"]
+[ext_resource type="Texture2D" uid="uid://db3on5fk0gohp" path="res://art/guy03.png" id="5_gsdi2"]
 [ext_resource type="Texture2D" uid="uid://x1d3ip4r3cfj" path="res://art/ballbig.png" id="5_hx6od"]
 [ext_resource type="Script" path="res://scripts/flailbig.gd" id="6_hb3ow"]
+[ext_resource type="Texture2D" uid="uid://c7h5cin8yfsac" path="res://art/guy04.png" id="6_q7vt5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hodh8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_evmqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xqmx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gsdi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q7vt5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rrugw"]
 radius = 2.0
@@ -34,8 +57,9 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_wd24r")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_fkjpx")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_hodh8")
+frame_progress = 0.582442
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 1)
