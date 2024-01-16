@@ -20,5 +20,5 @@ func _physics_process(delta):
 	
 	#DEBUG
 	debug_hp_label.text = str(hp)
-	if Input.is_action_just_pressed("hp-1"):
+	if Input.is_action_just_pressed("DEBUG-hp-1"):
 		hp -= 1

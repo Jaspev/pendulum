@@ -18,15 +18,16 @@ func _physics_process(delta):
 	
 	if hp == 0: #if killed, spawn 2 enemy02_03's
 		print("enemy02_02 killed")
-		var instanced_enemy02_03 = enemy02_03.instantiate()
-		instanced_enemy02_03.position.y = position.y
-		instanced_enemy02_03.position.x = position.x + 1
-		parent_node.add_child(instanced_enemy02_03)
-		instanced_enemy02_03.position.x = position.x - 1
-		parent_node.add_child(instanced_enemy02_03)
+		var instanced_enemy02_03_01 = enemy02_03.instantiate()
+		var instanced_enemy02_03_02 = enemy02_03.instantiate()
+		# offsetting one instances position so they don't get stuck in eachother
+		instanced_enemy02_03_01.position = position + Vector2(1,1)
+		parent_node.add_child(instanced_enemy02_03_01)
+		instanced_enemy02_03_02.position = position
+		parent_node.add_child(instanced_enemy02_03_02)
 		queue_free()
 	
 	#DEBUG
 	debug_hp_label.text = str(hp)
-	if Input.is_action_just_pressed("hp-1"):
+	if Input.is_action_just_pressed("DEBUG-hp-1"):
 		hp -= 1
