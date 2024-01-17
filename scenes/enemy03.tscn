@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwj2erl0vm0ii"]
+
+[ext_resource type="Texture2D" uid="uid://bi6o31e54qaof" path="res://art/ghost.png" id="1_0qgao"]
+[ext_resource type="Script" path="res://scripts/enemy03.gd" id="1_y555l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
+radius = 8.0
+
+[node name="Enemy03" type="CharacterBody2D"]
+script = ExtResource("1_y555l")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0qgao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_newrt")
+
+[node name="hp" type="Label" parent="."]
+offset_left = -16.0
+offset_top = 10.0
+offset_right = 19.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 11
+text = "health"

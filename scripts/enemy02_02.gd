@@ -1,7 +1,6 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy02_03 = preload("res://scenes/enemy02_03.tscn")
-@onready var parent_node = get_parent()
 var speed = 50
 var hp = 4
 
@@ -22,9 +21,9 @@ func _physics_process(delta):
 		var instanced_enemy02_03_02 = enemy02_03.instantiate()
 		# offsetting one instances position so they don't get stuck in eachother
 		instanced_enemy02_03_01.position = position + Vector2(1,1)
-		parent_node.add_child(instanced_enemy02_03_01)
+		get_parent().add_child(instanced_enemy02_03_01)
 		instanced_enemy02_03_02.position = position
-		parent_node.add_child(instanced_enemy02_03_02)
+		get_parent().add_child(instanced_enemy02_03_02)
 		queue_free()
 	
 	#DEBUG
