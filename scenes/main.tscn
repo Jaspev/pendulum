@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=19 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://x1d3ip4r3cfj" path="res://art/ballbig.png" id="5_hx6od"]
 [ext_resource type="Script" path="res://scripts/flailbig.gd" id="6_hb3ow"]
 [ext_resource type="Texture2D" uid="uid://c7h5cin8yfsac" path="res://art/guy04.png" id="6_q7vt5"]
+[ext_resource type="Texture2D" uid="uid://c1ro3d1re7731" path="res://art/heart.png" id="11_ibkjx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hodh8"]
 animations = [{
@@ -115,3 +116,11 @@ shape = SubResource("CircleShape2D_hce24")
 
 [node name="flailballbigrealcollision" type="CollisionShape2D" parent="flailballbigArea2D"]
 shape = SubResource("CircleShape2D_8dfvx")
+
+[node name="PlayerHPUI" type="TextureRect" parent="."]
+offset_left = 298.0
+offset_top = 7.0
+offset_right = 313.0
+offset_bottom = 21.0
+texture = ExtResource("11_ibkjx")
+stretch_mode = 1

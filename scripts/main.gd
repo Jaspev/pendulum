@@ -8,7 +8,10 @@ extends Node2D
 @onready var enemy02_01 = preload("res://scenes/enemy02_01.tscn")
 @onready var enemy03 = preload("res://scenes/enemy03.tscn")
 
-var money
+@onready var plrhpui = $PlayerHPUI
+
+var plr_hp = 5
+var money = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -17,7 +20,12 @@ func _ready():
 	timer.autostart = true
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
-	
+
+func _process(delta):
+	plrhpui.size.y = plr_hp * 14 # 14 being the size of the texture, and texturerect tiles when scaled
+	if plr_hp <= 0:
+		get_tree().change_scene_to_file("res://scenes/death.tscn")
+
 func _on_timer_timeout():
 	var instanced_enemy01 = enemy01.instantiate()
 	var instanced_enemy02_01 = enemy02_01.instantiate()
@@ -26,7 +34,7 @@ func _on_timer_timeout():
 	var pos_x
 	var pos_y
 	
-	#Randomly choose enemy spawn position. Probably a way better way to do this but this works.
+	# Randomly choose enemy spawn position. Probably a way better way to do this but this works.
 	randomize() # I don't think i need to call randomize this much but i'm too lazy to test if I do or don't
 	coin = rng.randf_range(-1,1)
 	if coin >= 0: #IF POSITIVE, SET ENEMY POS ON EITHER LEFT OF RIGHT
