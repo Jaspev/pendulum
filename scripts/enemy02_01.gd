@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy02_02 = preload("res://scenes/enemy02_02.tscn")
 @onready var enemy_iframes = $enemy_iframes
+@onready var rng = RandomNumberGenerator.new()
+@onready var coin_preload = preload("res://scenes/coin.tscn")
 
 var speed = 25
 var hp = 6
@@ -18,6 +20,13 @@ func _physics_process(delta):
 	if hp <= 0: #if killed, spawn 2 enemy02_02's
 		GLOBAL.score += points
 		GLOBAL.kill_count += 1
+		
+		var coinflip = rng.randf_range(-1,1)
+		if coinflip >= 0:
+			var coin_inst = coin_preload.instantiate()
+			coin_inst.position = position
+			get_parent().add_child(coin_inst)
+		
 		var instanced_enemy02_02_01 = enemy02_02.instantiate()
 		var instanced_enemy02_02_02 = enemy02_02.instantiate()
 		# offsetting one instances position so they don't get stuck in eachother

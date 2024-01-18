@@ -3,6 +3,7 @@ extends Area2D
 @onready var iframes_timer = $"../Player/iframestimer"
 @onready var iframes_anim = $"../Player/iframesanim"
 @onready var sfx_hit_player = $"../hit_player"
+@onready var sfx_pickup_coin = $"../pickup_coin"
 
 func hurt_player():
 	GLOBAL.plr_hp -= 1
@@ -21,3 +22,7 @@ func _process(delta):
 	for n in coll_area:
 		if  n.is_in_group("enemy") and iframes_timer.is_stopped():
 			hurt_player()
+		if n.is_in_group("coin"):
+			GLOBAL.money += 1
+			sfx_pickup_coin.play()
+			n.queue_free()

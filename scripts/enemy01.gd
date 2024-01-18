@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy_iframes = $enemy_iframes
 @onready var hit = $hit
+@onready var rng = RandomNumberGenerator.new()
+@onready var coin_preload = preload("res://scenes/coin.tscn")
 
 var speed = 50
 var hp = 4
@@ -18,4 +20,9 @@ func _physics_process(delta):
 	if hp <= 0:
 		GLOBAL.score += points
 		GLOBAL.kill_count += 1
+		var coinflip = rng.randf_range(-1,1)
+		if coinflip >= 0:
+			var coin_inst = coin_preload.instantiate()
+			coin_inst.position = position
+			get_parent().add_child(coin_inst)
 		queue_free()

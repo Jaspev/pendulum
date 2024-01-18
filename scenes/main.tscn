@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=33 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://3ji10lc22unn" path="res://audio/hit_enemy_big.wav" id="19_nt8h7"]
 [ext_resource type="AudioStream" uid="uid://cahr3g0vt6ry1" path="res://audio/hit_player.wav" id="19_o8okv"]
 [ext_resource type="AudioStream" uid="uid://cnqvyaqr0hfqr" path="res://audio/main_music_placeholder.wav" id="21_ya741"]
+[ext_resource type="AudioStream" uid="uid://byvvg1yee85th" path="res://audio/coinpickup.wav" id="23_ygdr0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hodh8"]
 animations = [{
@@ -215,6 +216,10 @@ bus = &"sfx"
 stream = ExtResource("21_ya741")
 autoplay = true
 bus = &"music"
+
+[node name="pickup_coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_ygdr0")
+bus = &"sfx"
 
 [connection signal="body_entered" from="flailballsmallArea2D" to="flailballsmallArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="flailballbigArea2D" to="flailballbigArea2D" method="_on_body_entered"]

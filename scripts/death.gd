@@ -9,7 +9,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	death_sfx.play()
 	scoreui.text = str("your score was: ", GLOBAL.score)
-	moneyui.text = str("you died with ", GLOBAL.money, " dollars in your pocket")
+	moneyui.text = str("you died with ", GLOBAL.money, " pennies in your pocket")
 	killcountui.text = str("you killed ", GLOBAL.kill_count, " enemies")
 
 func _on_retry_pressed():
