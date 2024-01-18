@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=24 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c7h5cin8yfsac" path="res://art/guy04.png" id="6_q7vt5"]
 [ext_resource type="Script" path="res://scripts/playercollision.gd" id="11_8pchf"]
 [ext_resource type="Texture2D" uid="uid://c1ro3d1re7731" path="res://art/heart.png" id="11_ibkjx"]
+[ext_resource type="Script" path="res://scenes/flailballsmallcollision.gd" id="12_hmybx"]
+[ext_resource type="Script" path="res://scenes/flailballbigcollision.gd" id="13_ot8ce"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hodh8"]
 animations = [{
@@ -80,6 +82,7 @@ collision_mask = 0
 script = ExtResource("2_wd24r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+z_index = 99
 sprite_frames = SubResource("SpriteFrames_hodh8")
 autoplay = "default"
 frame_progress = 0.94516
@@ -138,11 +141,13 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_0c4km")
 
 [node name="flailballsmallArea2D" type="Area2D" parent="."]
+script = ExtResource("12_hmybx")
 
 [node name="flailballsmallrealcollision" type="CollisionShape2D" parent="flailballsmallArea2D"]
 shape = SubResource("CircleShape2D_hce24")
 
 [node name="flailballbigArea2D" type="Area2D" parent="."]
+script = ExtResource("13_ot8ce")
 
 [node name="flailballbigrealcollision" type="CollisionShape2D" parent="flailballbigArea2D"]
 shape = SubResource("CircleShape2D_8dfvx")
@@ -155,3 +160,6 @@ offset_right = 313.0
 offset_bottom = 21.0
 texture = ExtResource("11_ibkjx")
 stretch_mode = 1
+
+[connection signal="body_entered" from="flailballsmallArea2D" to="flailballsmallArea2D" method="_on_body_entered"]
+[connection signal="body_entered" from="flailballbigArea2D" to="flailballbigArea2D" method="_on_body_entered"]

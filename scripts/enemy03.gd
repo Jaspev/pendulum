@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var bullet = preload("res://scenes/bullet.tscn")
+@onready var enemy_iframes = $enemy_iframes
 @onready var shoot_timer = Timer.new()
 var speed = 15
 var hp = 2
@@ -22,8 +23,7 @@ func _physics_process(delta):
 	if collision_info:
 		velocity = velocity.bounce(collision_info.get_normal())
 	
-	if hp == 0:
-		print("enemy03 killed")
+	if hp <= 0:
 		queue_free()
 	
 	#DEBUG

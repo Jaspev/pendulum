@@ -4,7 +4,6 @@ extends Area2D
 @onready var iframes_anim = $"../Player/iframesanim"
 
 func hurt_player():
-	print("player hit")
 	GLOBAL.plr_hp -= 1
 	iframes_timer.start()
 	iframes_anim.queue("iframes_anim")

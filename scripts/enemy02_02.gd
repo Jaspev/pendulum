@@ -1,12 +1,16 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy02_03 = preload("res://scenes/enemy02_03.tscn")
+@onready var enemy_iframes = $enemy_iframes
 var speed = 50
 var hp = 4
 
 #DEBUG
 @onready var debug_hp_label = $hp
-	
+
+func _ready():
+	enemy_iframes.start()
+
 func _physics_process(delta):
 	position = position.move_toward(player.position, delta * speed) #constantly move toward the player
 	
@@ -15,8 +19,7 @@ func _physics_process(delta):
 	if collision_info:
 		velocity = velocity.bounce(collision_info.get_normal())
 	
-	if hp == 0: #if killed, spawn 2 enemy02_03's
-		print("enemy02_02 killed")
+	if hp <= 0: #if killed, spawn 2 enemy02_03's
 		var instanced_enemy02_03_01 = enemy02_03.instantiate()
 		var instanced_enemy02_03_02 = enemy02_03.instantiate()
 		# offsetting one instances position so they don't get stuck in eachother

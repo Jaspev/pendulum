@@ -22,3 +22,7 @@ offset_right = 19.0
 offset_bottom = 26.0
 theme_override_font_sizes/font_size = 11
 text = "health"
+
+[node name="enemy_iframes" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

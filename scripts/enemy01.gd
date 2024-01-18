@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
+@onready var enemy_iframes = $enemy_iframes
 var speed = 50
 var hp = 4
 
@@ -14,8 +15,7 @@ func _physics_process(delta):
 	if collision_info:
 		velocity = velocity.bounce(collision_info.get_normal())
 	
-	if hp == 0:
-		print("enemy01 killed")
+	if hp <= 0:
 		queue_free()
 	
 	#DEBUG
