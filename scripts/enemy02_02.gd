@@ -2,11 +2,10 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy02_03 = preload("res://scenes/enemy02_03.tscn")
 @onready var enemy_iframes = $enemy_iframes
+
 var speed = 50
 var hp = 4
-
-#DEBUG
-@onready var debug_hp_label = $hp
+var points = 5
 
 func _ready():
 	enemy_iframes.start()
@@ -20,6 +19,8 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision_info.get_normal())
 	
 	if hp <= 0: #if killed, spawn 2 enemy02_03's
+		GLOBAL.score += points
+		GLOBAL.kill_count += 1
 		var instanced_enemy02_03_01 = enemy02_03.instantiate()
 		var instanced_enemy02_03_02 = enemy02_03.instantiate()
 		# offsetting one instances position so they don't get stuck in eachother
@@ -28,8 +29,3 @@ func _physics_process(delta):
 		instanced_enemy02_03_02.position = position
 		get_parent().add_child(instanced_enemy02_03_02)
 		queue_free()
-	
-	#DEBUG
-	debug_hp_label.text = str(hp)
-	if Input.is_action_just_pressed("DEBUG-hp-1"):
-		hp -= 1

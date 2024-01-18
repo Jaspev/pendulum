@@ -1,11 +1,11 @@
 extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var enemy_iframes = $enemy_iframes
+@onready var hit = $hit
+
 var speed = 50
 var hp = 4
-
-#DEBUG
-@onready var debug_hp_label = $hp
+var points = 10
 
 func _physics_process(delta):
 	position = position.move_toward(player.position, delta * speed) #constantly move toward the player
@@ -16,9 +16,6 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision_info.get_normal())
 	
 	if hp <= 0:
+		GLOBAL.score += points
+		GLOBAL.kill_count += 1
 		queue_free()
-	
-	#DEBUG
-	debug_hp_label.text = str(hp)
-	if Input.is_action_just_pressed("DEBUG-hp-1"):
-		hp -= 1

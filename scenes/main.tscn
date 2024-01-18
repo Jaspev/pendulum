@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=32 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
@@ -10,10 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://x1d3ip4r3cfj" path="res://art/ballbig.png" id="5_hx6od"]
 [ext_resource type="Script" path="res://scripts/flailbig.gd" id="6_hb3ow"]
 [ext_resource type="Texture2D" uid="uid://c7h5cin8yfsac" path="res://art/guy04.png" id="6_q7vt5"]
+[ext_resource type="Texture2D" uid="uid://cibvvbwpbdfuh" path="res://art/chain.png" id="7_t6mwl"]
+[ext_resource type="Script" path="res://scripts/chain1.gd" id="10_pqrau"]
 [ext_resource type="Script" path="res://scripts/playercollision.gd" id="11_8pchf"]
 [ext_resource type="Texture2D" uid="uid://c1ro3d1re7731" path="res://art/heart.png" id="11_ibkjx"]
-[ext_resource type="Script" path="res://scenes/flailballsmallcollision.gd" id="12_hmybx"]
-[ext_resource type="Script" path="res://scenes/flailballbigcollision.gd" id="13_ot8ce"]
+[ext_resource type="Script" path="res://scripts/flailballsmallcollision.gd" id="12_hmybx"]
+[ext_resource type="Script" path="res://scripts/chain2.gd" id="13_0372c"]
+[ext_resource type="Script" path="res://scripts/flailballbigcollision.gd" id="13_ot8ce"]
+[ext_resource type="AudioStream" uid="uid://c3rvm076yy7ex" path="res://audio/hit_enemy_small.wav" id="18_6ssfo"]
+[ext_resource type="Theme" uid="uid://hn10mff0bn8n" path="res://themes/main_theme.tres" id="18_vc717"]
+[ext_resource type="AudioStream" uid="uid://3ji10lc22unn" path="res://audio/hit_enemy_big.wav" id="19_nt8h7"]
+[ext_resource type="AudioStream" uid="uid://cahr3g0vt6ry1" path="res://audio/hit_player.wav" id="19_o8okv"]
+[ext_resource type="AudioStream" uid="uid://cnqvyaqr0hfqr" path="res://audio/main_music_placeholder.wav" id="21_ya741"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hodh8"]
 animations = [{
@@ -105,7 +113,7 @@ libraries = {
 
 [node name="flailballsmall" type="RigidBody2D" parent="."]
 z_index = -1
-position = Vector2(0, 26)
+position = Vector2(0, 27)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("4_h76mi")
@@ -120,9 +128,15 @@ shape = SubResource("CircleShape2D_kar50")
 node_a = NodePath("..")
 node_b = NodePath("../../flailballbig")
 
+[node name="Chain1" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(0, 14)
+texture = ExtResource("7_t6mwl")
+script = ExtResource("10_pqrau")
+
 [node name="flailballbig" type="RigidBody2D" parent="."]
 z_index = -2
-position = Vector2(0, 60)
+position = Vector2(0, 61)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("6_hb3ow")
@@ -132,6 +146,12 @@ texture = ExtResource("5_hx6od")
 
 [node name="dontusethiscollsion" type="CollisionShape2D" parent="flailballbig"]
 shape = SubResource("CircleShape2D_xj8om")
+
+[node name="Chain2" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(0, 40)
+texture = ExtResource("7_t6mwl")
+script = ExtResource("13_0372c")
 
 [node name="playerArea2D" type="Area2D" parent="."]
 script = ExtResource("11_8pchf")
@@ -160,6 +180,41 @@ offset_right = 313.0
 offset_bottom = 21.0
 texture = ExtResource("11_ibkjx")
 stretch_mode = 1
+
+[node name="score" type="Label" parent="."]
+z_index = 100
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 56.0
+offset_bottom = 20.0
+theme = ExtResource("18_vc717")
+text = "score"
+
+[node name="money" type="Label" parent="."]
+z_index = 100
+offset_left = 8.0
+offset_top = 19.0
+offset_right = 56.0
+offset_bottom = 33.0
+theme = ExtResource("18_vc717")
+text = "money"
+
+[node name="hit_enemy_small" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_6ssfo")
+bus = &"sfx"
+
+[node name="hit_enemy_big" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_nt8h7")
+bus = &"sfx"
+
+[node name="hit_player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_o8okv")
+bus = &"sfx"
+
+[node name="main_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_ya741")
+autoplay = true
+bus = &"music"
 
 [connection signal="body_entered" from="flailballsmallArea2D" to="flailballsmallArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="flailballbigArea2D" to="flailballbigArea2D" method="_on_body_entered"]

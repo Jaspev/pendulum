@@ -16,14 +16,6 @@ texture = ExtResource("2_dr8ug")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_newrt")
 
-[node name="hp" type="Label" parent="."]
-offset_left = -16.0
-offset_top = 10.0
-offset_right = 19.0
-offset_bottom = 26.0
-theme_override_font_sizes/font_size = 11
-text = "health"
-
 [node name="enemy_iframes" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://7simkpl7t01o"]
+[gd_scene load_steps=5 format=3 uid="uid://7simkpl7t01o"]
 
 [ext_resource type="Script" path="res://scripts/enemy01.gd" id="1_7tsa3"]
 [ext_resource type="Texture2D" uid="uid://b44ry4tw48r7q" path="res://art/skull.png" id="2_rtac4"]
+[ext_resource type="AudioStream" uid="uid://dh8rjob7vw0vl" path="res://audio/hit.wav" id="3_0txhx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 7.0
@@ -15,14 +16,10 @@ texture = ExtResource("2_rtac4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_newrt")
 
-[node name="hp" type="Label" parent="."]
-offset_left = -16.0
-offset_top = 10.0
-offset_right = 19.0
-offset_bottom = 26.0
-theme_override_font_sizes/font_size = 11
-text = "health"
-
 [node name="enemy_iframes" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0txhx")
+bus = &"sfx"

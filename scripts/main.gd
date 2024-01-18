@@ -9,11 +9,13 @@ extends Node2D
 @onready var enemy03 = preload("res://scenes/enemy03.tscn")
 
 @onready var plrhpui = $PlayerHPUI
+@onready var scoreui = $score
+@onready var moneyui = $money
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	timer.wait_time = 3.5
+	timer.wait_time = 3
 	timer.autostart = true
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
@@ -22,6 +24,9 @@ func _process(delta):
 	plrhpui.size.y = GLOBAL.plr_hp * 14 # 14 being the size of the texture, and texturerect tiles when scaled
 	if GLOBAL.plr_hp <= 0:
 		get_tree().change_scene_to_file("res://scenes/death.tscn")
+	
+	scoreui.text = str("SCORE: ", GLOBAL.score)
+	moneyui.text = str("MONEY: ", GLOBAL.money)
 
 func _on_timer_timeout():
 	var instanced_enemy01 = enemy01.instantiate()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwj2erl0vm0ii"]
+[gd_scene load_steps=5 format=3 uid="uid://bwj2erl0vm0ii"]
 
 [ext_resource type="Texture2D" uid="uid://bi6o31e54qaof" path="res://art/ghost.png" id="1_0qgao"]
 [ext_resource type="Script" path="res://scripts/enemy03.gd" id="1_y555l"]
+[ext_resource type="AudioStream" uid="uid://cknp1qougcuep" path="res://audio/pewhigh.wav" id="3_1cieh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 8.0
@@ -16,14 +17,10 @@ texture = ExtResource("1_0qgao")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_newrt")
 
-[node name="hp" type="Label" parent="."]
-offset_left = -16.0
-offset_top = 10.0
-offset_right = 19.0
-offset_bottom = 26.0
-theme_override_font_sizes/font_size = 11
-text = "health"
-
 [node name="enemy_iframes" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="shoot_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1cieh")
+bus = &"sfx"

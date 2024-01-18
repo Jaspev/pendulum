@@ -1,39 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo7hx41hknq63"]
+[gd_scene load_steps=4 format=3 uid="uid://bo7hx41hknq63"]
 
 [ext_resource type="Script" path="res://scripts/death.gd" id="1_pkky2"]
 [ext_resource type="Theme" uid="uid://hn10mff0bn8n" path="res://themes/main_theme.tres" id="2_f67i3"]
+[ext_resource type="AudioStream" uid="uid://cq3bxxcc0wyk4" path="res://audio/deathplaceholder.mp3" id="3_e45y2"]
 
 [node name="Death" type="Node2D"]
 script = ExtResource("1_pkky2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 321.0
-offset_bottom = 181.0
+offset_bottom = 162.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="youdied" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme = ExtResource("2_f67i3")
 text = "you died lmao"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="score" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_f67i3")
+text = "your score was: x"
+
+[node name="killcount" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_f67i3")
+text = "you died with x amount of money in pocket"
+
+[node name="moneyleft" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_f67i3")
+text = "you killed x amount of enemies"
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+offset_top = 128.0
+offset_right = 321.0
+offset_bottom = 181.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2"]
 layout_mode = 2
 
-[node name="retry" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="retry" type="Button" parent="CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme = ExtResource("2_f67i3")
 text = "retry"
 
-[node name="menu" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="menu" type="Button" parent="CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(43, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme = ExtResource("2_f67i3")
 text = "menu"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/menu" to="." method="_on_menu_pressed"]
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e45y2")
+bus = &"music"
+
+[connection signal="pressed" from="CenterContainer2/HBoxContainer/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CenterContainer2/HBoxContainer/menu" to="." method="_on_menu_pressed"]
