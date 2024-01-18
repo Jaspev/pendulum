@@ -10,9 +10,6 @@ extends Node2D
 
 @onready var plrhpui = $PlayerHPUI
 
-var plr_hp = 5
-var money = 0
-
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
@@ -22,8 +19,8 @@ func _ready():
 	add_child(timer)
 
 func _process(delta):
-	plrhpui.size.y = plr_hp * 14 # 14 being the size of the texture, and texturerect tiles when scaled
-	if plr_hp <= 0:
+	plrhpui.size.y = GLOBAL.plr_hp * 14 # 14 being the size of the texture, and texturerect tiles when scaled
+	if GLOBAL.plr_hp <= 0:
 		get_tree().change_scene_to_file("res://scenes/death.tscn")
 
 func _on_timer_timeout():

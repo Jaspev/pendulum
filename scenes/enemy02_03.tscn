@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 6.0
 
-[node name="Enemy02_03" type="CharacterBody2D"]
+[node name="Enemy02_03" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_qqgam")
 metadata/_edit_group_ = true
 

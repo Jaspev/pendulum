@@ -3,9 +3,6 @@ extends CharacterBody2D
 @onready var viewport_size = get_viewport_rect().size
 @onready var collision = $"../playerArea2D/CollisionShape2D"
 
-func _ready():
-	pass
-	
 func _process(delta):
 	var cursor_pos_x = snapped(get_viewport().get_mouse_position().x, 1) - 0.5 # snapped to round to whole number,
 	var cursor_pos_y = snapped(get_viewport().get_mouse_position().y, 1) - 0.5 # and -0.5 to fix visual bug.

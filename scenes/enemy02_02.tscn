@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 9.21954
 
-[node name="Enemy02_02" type="CharacterBody2D"]
+[node name="Enemy02_02" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_l7ek6")
 metadata/_edit_group_ = true
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=22 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://x1d3ip4r3cfj" path="res://art/ballbig.png" id="5_hx6od"]
 [ext_resource type="Script" path="res://scripts/flailbig.gd" id="6_hb3ow"]
 [ext_resource type="Texture2D" uid="uid://c7h5cin8yfsac" path="res://art/guy04.png" id="6_q7vt5"]
+[ext_resource type="Script" path="res://scripts/playercollision.gd" id="11_8pchf"]
 [ext_resource type="Texture2D" uid="uid://c1ro3d1re7731" path="res://art/heart.png" id="11_ibkjx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hodh8"]
@@ -34,6 +35,26 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rrugw"]
 radius = 2.0
+
+[sub_resource type="Animation" id="Animation_dwgm7"]
+resource_name = "iframes_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vfdt"]
+_data = {
+"iframes_anim": SubResource("Animation_dwgm7")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kar50"]
 radius = 2.23607
@@ -71,6 +92,14 @@ shape = SubResource("CircleShape2D_rrugw")
 node_a = NodePath("..")
 node_b = NodePath("../../flailballsmall")
 
+[node name="iframestimer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="iframesanim" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_2vfdt")
+}
+
 [node name="flailballsmall" type="RigidBody2D" parent="."]
 z_index = -1
 position = Vector2(0, 26)
@@ -102,6 +131,7 @@ texture = ExtResource("5_hx6od")
 shape = SubResource("CircleShape2D_xj8om")
 
 [node name="playerArea2D" type="Area2D" parent="."]
+script = ExtResource("11_8pchf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerArea2D"]
 position = Vector2(0, 1)
@@ -118,6 +148,7 @@ shape = SubResource("CircleShape2D_hce24")
 shape = SubResource("CircleShape2D_8dfvx")
 
 [node name="PlayerHPUI" type="TextureRect" parent="."]
+z_index = 100
 offset_left = 298.0
 offset_top = 7.0
 offset_right = 313.0

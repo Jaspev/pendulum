@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo7hx41hknq63"]
+[gd_scene load_steps=3 format=3 uid="uid://bo7hx41hknq63"]
 
 [ext_resource type="Script" path="res://scripts/death.gd" id="1_pkky2"]
+[ext_resource type="Theme" uid="uid://hn10mff0bn8n" path="res://themes/main_theme.tres" id="2_f67i3"]
 
 [node name="Death" type="Node2D"]
 script = ExtResource("1_pkky2")
@@ -14,6 +15,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_f67i3")
 text = "you died lmao"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
@@ -22,11 +24,15 @@ layout_mode = 2
 [node name="retry" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_f67i3")
 text = "retry"
 
 [node name="menu" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_f67i3")
 text = "menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/retry" to="." method="_on_retry_pressed"]

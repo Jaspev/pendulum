@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pedep"]
 radius = 4.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_cv83g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

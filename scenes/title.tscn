@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://colgvcmrxmljc"]
+[gd_scene load_steps=6 format=3 uid="uid://colgvcmrxmljc"]
 
 [ext_resource type="Script" path="res://scripts/volslider.gd" id="2_lcaas"]
 [ext_resource type="Script" path="res://scripts/title.gd" id="2_qib4r"]
+[ext_resource type="FontFile" uid="uid://v2pqgvneu31c" path="res://fonts/TimesNewPixel.ttf" id="2_ud58c"]
 [ext_resource type="AudioStream" uid="uid://clpadihcoq4xm" path="res://audio/UndertaleStartMenuPlaceholderMusic.mp3" id="2_wsfpw"]
+[ext_resource type="Theme" uid="uid://hn10mff0bn8n" path="res://themes/main_theme.tres" id="3_ohlf0"]
 
 [node name="Title" type="Node2D"]
 
@@ -11,24 +13,27 @@ offset_right = 320.0
 offset_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("3_ohlf0")
 script = ExtResource("2_qib4r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="button_start" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "start"
+theme = ExtResource("3_ohlf0")
+theme_override_fonts/font = ExtResource("2_ud58c")
+text = "START"
 
 [node name="button_quit" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "quit"
+theme = ExtResource("3_ohlf0")
+text = "QUIT"
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -39,7 +44,7 @@ layout_mode = 2
 [node name="keybinds" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 11
+theme = ExtResource("3_ohlf0")
 text = "keybinds:
 esc = quit
 f11 = fullscreen"
@@ -54,14 +59,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CheckBox" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
 layout_direction = 3
 layout_mode = 2
-size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("3_ohlf0")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme = ExtResource("3_ohlf0")
 text = "fullscreen"
 vertical_alignment = 1
 
@@ -69,8 +75,9 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+theme = ExtResource("3_ohlf0")
 max_value = 1.0
 step = 0.001
 script = ExtResource("2_lcaas")
@@ -78,7 +85,7 @@ bus_name = "Master"
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme = ExtResource("3_ohlf0")
 text = "master vol"
 vertical_alignment = 1
 
@@ -86,8 +93,9 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="HSlider2" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+theme = ExtResource("3_ohlf0")
 max_value = 1.0
 step = 0.001
 script = ExtResource("2_lcaas")
@@ -95,16 +103,17 @@ bus_name = "music"
 
 [node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
-text = "music  vol"
+theme = ExtResource("3_ohlf0")
+text = "music vol"
 vertical_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="HSlider3" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+theme = ExtResource("3_ohlf0")
 max_value = 1.0
 step = 0.001
 script = ExtResource("2_lcaas")
@@ -112,7 +121,7 @@ bus_name = "sfx"
 
 [node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme = ExtResource("3_ohlf0")
 text = "sfx vol"
 vertical_alignment = 1
 
