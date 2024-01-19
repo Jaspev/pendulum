@@ -17,6 +17,3 @@ func _input(event):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
-	if event.is_action_pressed("closegame"): # esc closes game
-		get_tree().quit()

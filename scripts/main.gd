@@ -8,9 +8,13 @@ extends Node2D
 @onready var enemy02_01 = preload("res://scenes/enemy02_01.tscn")
 @onready var enemy03 = preload("res://scenes/enemy03.tscn")
 
+#ui
 @onready var plrhpui = $PlayerHPUI
 @onready var scoreui = $score
 @onready var moneyui = $money
+
+#DEBUG
+@onready var DEBUGkillcountui = $DEBUGkillcount
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -27,6 +31,20 @@ func _process(delta):
 	
 	scoreui.text = str("SCORE: ", GLOBAL.score)
 	moneyui.text = str("MONEY: ", GLOBAL.money)
+	
+	#DEBUG
+	DEBUGkillcountui.text = str("DEBUG KILLCOUNT: ", GLOBAL.kill_count)
+
+func _input(event):
+	if event.is_action_pressed("menu"): # esc opens menu
+		get_tree().change_scene_to_file("res://scenes/title.tscn")
+		
+	# DEBUG put whatever you wanna debug here whenever you press "D"
+	if event.is_action_pressed("DEBUG1"):
+		pass
+	# DEBUG put whatever you wanna debug here whenever you press "F"
+	if event.is_action_pressed("DEBUG2"):
+		pass
 
 func _on_timer_timeout():
 	var instanced_enemy01 = enemy01.instantiate()
@@ -69,8 +87,8 @@ func _on_timer_timeout():
 	var rand_pos = Vector2(pos_x,pos_y)
 	
 	# put instanced enemies into an array so they can randomly be selected from array
-	var enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03] #full list
-	#var enemies_array = [instanced_enemy03] # for testing
+	#var enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03] #full list
+	var enemies_array = [instanced_enemy01] # for testing
 	var rand_selected_enemy = enemies_array[randi() % enemies_array.size()]
 	rand_selected_enemy.position = rand_pos
 	add_child(rand_selected_enemy)

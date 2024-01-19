@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://colgvcmrxmljc"]
+[gd_scene load_steps=7 format=3 uid="uid://colgvcmrxmljc"]
 
 [ext_resource type="Script" path="res://scripts/volslider.gd" id="2_lcaas"]
 [ext_resource type="Script" path="res://scripts/title.gd" id="2_qib4r"]
 [ext_resource type="FontFile" uid="uid://v2pqgvneu31c" path="res://fonts/TimesNewPixel.ttf" id="2_ud58c"]
 [ext_resource type="AudioStream" uid="uid://clpadihcoq4xm" path="res://audio/UndertaleStartMenuPlaceholderMusic.mp3" id="2_wsfpw"]
 [ext_resource type="Theme" uid="uid://hn10mff0bn8n" path="res://themes/main_theme.tres" id="3_ohlf0"]
+[ext_resource type="AudioStream" uid="uid://beiu3gqfpkpd" path="res://audio/uihover.wav" id="6_n6qex"]
 
 [node name="Title" type="Node2D"]
 
@@ -130,6 +131,17 @@ stream = ExtResource("2_wsfpw")
 autoplay = true
 bus = &"music"
 
+[node name="hoversfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n6qex")
+volume_db = -6.411
+bus = &"sfx"
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/VBoxContainer/button_start" to="CenterContainer" method="_on_button_start_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/button_start" to="CenterContainer" method="_on_button_start_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/VBoxContainer/button_quit" to="CenterContainer" method="_on_button_quit_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/button_quit" to="CenterContainer" method="_on_button_quit_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckBox" to="CenterContainer" method="_on_check_box_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckBox" to="CenterContainer" method="_on_check_box_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HSlider" to="CenterContainer" method="_on_h_slider_mouse_entered"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="CenterContainer" method="_on_h_slider_2_mouse_entered"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/HSlider3" to="CenterContainer" method="_on_h_slider_3_mouse_entered"]

@@ -200,24 +200,33 @@ offset_bottom = 33.0
 theme = ExtResource("18_vc717")
 text = "money"
 
-[node name="hit_enemy_small" type="AudioStreamPlayer2D" parent="."]
+[node name="DEBUGkillcount" type="Label" parent="."]
+z_index = 100
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 56.0
+offset_bottom = 47.0
+theme = ExtResource("18_vc717")
+text = "money"
+
+[node name="hit_enemy_small" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6ssfo")
 bus = &"sfx"
 
-[node name="hit_enemy_big" type="AudioStreamPlayer2D" parent="."]
+[node name="hit_enemy_big" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_nt8h7")
 bus = &"sfx"
 
-[node name="hit_player" type="AudioStreamPlayer2D" parent="."]
+[node name="hit_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_o8okv")
 bus = &"sfx"
 
-[node name="main_music" type="AudioStreamPlayer2D" parent="."]
+[node name="main_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_ya741")
 autoplay = true
 bus = &"music"
 
-[node name="pickup_coin" type="AudioStreamPlayer2D" parent="."]
+[node name="pickup_coin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_ygdr0")
 bus = &"sfx"
 

@@ -1,6 +1,7 @@
 extends CenterContainer
 
 @onready var check_box = $VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckBox
+@onready var hoversfx = $"../hoversfx"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -25,3 +26,22 @@ func _on_check_box_pressed():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+# everything below this point is hell
+func _on_button_start_mouse_entered():
+	hoversfx.play()
+
+func _on_button_quit_mouse_entered():
+	hoversfx.play()
+
+func _on_check_box_mouse_entered():
+	hoversfx.play()
+
+func _on_h_slider_mouse_entered():
+	hoversfx.play()
+
+func _on_h_slider_2_mouse_entered():
+	hoversfx.play()
+
+func _on_h_slider_3_mouse_entered():
+	hoversfx.play()
