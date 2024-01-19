@@ -48,7 +48,8 @@ size_flags_vertical = 1
 theme = ExtResource("3_ohlf0")
 text = "keybinds:
 esc = quit
-f11 = fullscreen"
+f11 = fullscreen
+tab = shop"
 
 [node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

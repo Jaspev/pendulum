@@ -39,13 +39,14 @@ func _input(event):
 	if event.is_action_pressed("menu"): # esc opens menu
 		get_tree().change_scene_to_file("res://scenes/title.tscn")
 		
+	if event.is_action_pressed("shop"):
+		get_tree().change_scene_to_file("res://scenes/shop.tscn")
 	# DEBUG put whatever you wanna debug here whenever you press "D"
 	if event.is_action_pressed("DEBUG1"):
 		pass
 	# DEBUG put whatever you wanna debug here whenever you press "F"
 	if event.is_action_pressed("DEBUG2"):
 		pass
-
 func _on_timer_timeout():
 	var instanced_enemy01 = enemy01.instantiate()
 	var instanced_enemy02_01 = enemy02_01.instantiate()
