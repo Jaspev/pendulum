@@ -4,32 +4,40 @@
 [ext_resource type="Script" path="res://scripts/shop.gd" id="2_jqubp"]
 
 [node name="Shop" type="Node2D"]
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-offset_right = 320.0
-offset_bottom = 180.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("1_sfnue")
 script = ExtResource("2_jqubp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 1.0
+offset_right = 186.0
+offset_bottom = 24.0
 size_flags_vertical = 0
-text = "Shop
+text = "schlop
 "
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Label"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 20.0
+offset_right = 52.0
+offset_bottom = 24.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 146.0
+offset_top = 66.0
+offset_right = 223.0
+offset_bottom = 80.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_sfnue")
+text = "penis"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
+[node name="money" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "money"

@@ -88,8 +88,8 @@ func _on_timer_timeout():
 	var rand_pos = Vector2(pos_x,pos_y)
 	
 	# put instanced enemies into an array so they can randomly be selected from array
-	#var enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03] #full list
-	var enemies_array = [instanced_enemy01] # for testing
+	var enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03] #full list
+	#var enemies_array = [instanced_enemy01] # for testing
 	var rand_selected_enemy = enemies_array[randi() % enemies_array.size()]
 	rand_selected_enemy.position = rand_pos
 	add_child(rand_selected_enemy)
