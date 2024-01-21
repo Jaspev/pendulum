@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var check_box = $VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckBox
 @onready var hoversfx = $"../hoversfx"
 @onready var moneyui = $money
 

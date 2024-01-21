@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxqutcwsljrue"]
+[gd_scene load_steps=5 format=3 uid="uid://7simkpl7t01o"]
 
 [ext_resource type="Script" path="res://scripts/enemy01.gd" id="1_osadc"]
-[ext_resource type="Texture2D" uid="uid://b44ry4tw48r7q" path="res://art/skull.png" id="2_urfhg"]
+[ext_resource type="Texture2D" uid="uid://b8n2fgjjr606o" path="res://art/boss01.png" id="2_7wkif"]
 [ext_resource type="AudioStream" uid="uid://dh8rjob7vw0vl" path="res://audio/hit.wav" id="3_5m81r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
-radius = 7.0
+radius = 20.025
 
-[node name="Enemy01" type="CharacterBody2D" groups=["enemy"]]
+[node name="Enemy04" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_osadc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_urfhg")
+texture = ExtResource("2_7wkif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_newrt")

@@ -207,7 +207,7 @@ offset_top = 33.0
 offset_right = 56.0
 offset_bottom = 47.0
 theme = ExtResource("18_vc717")
-text = "money"
+text = "DEBUG  enemy_spawn_count"
 
 [node name="hit_enemy_small" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6ssfo")
