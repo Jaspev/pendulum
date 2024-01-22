@@ -10,16 +10,19 @@ extends Node2D
 
 #bosses
 @onready var boss01 = preload("res://scenes/boss01.tscn")
+@onready var boss02 = preload("res://scenes/boss02.tscn")
+@onready var boss03 = preload("res://scenes/boss03.tscn")
 
 #ui
 @onready var plrhpui = $PlayerHPUI
 @onready var scoreui = $score
 @onready var moneyui = $money
 
-var current_enemies:Array
+var current_enemies
 
 #DEBUG
-@onready var DEBUGspawncountui = $DEBUGkillcount
+@onready var DEBUGspawncountui = $DEBUGspawncount
+@onready var DEBUGenemiesonscreen = $DEBUGenemesonscreen
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -30,6 +33,8 @@ func _ready():
 	add_child(timer)
 
 func _process(delta):
+	current_enemies = get_tree().get_nodes_in_group("current_enemies").size()
+	
 	plrhpui.size.y = GLOBAL.plr_hp * 14 # 14 being the size of the texture, and texturerect tiles when scaled
 	if GLOBAL.plr_hp <= 0:
 		get_tree().change_scene_to_file("res://scenes/death.tscn")
@@ -37,15 +42,9 @@ func _process(delta):
 	scoreui.text = str("SCORE: ", GLOBAL.score)
 	moneyui.text = str("MONEY: ", GLOBAL.money)
 	
-	# remove freed instances from current_enemies array
-	for child in self.get_children():
-		if child.name == "<Freed Object>":
-			current_enemies.erase(child)
-	
-	print("current_enemies: ",current_enemies)
-	
 	#DEBUG
 	DEBUGspawncountui.text = str("DEBUG SPAWNCOUNT: ", GLOBAL.enemy_spawn_count)
+	DEBUGenemiesonscreen.text = str("DEBUG ENMYSONSCRN: ", current_enemies)
 
 func _input(event):
 	if event.is_action_pressed("menu"): # esc opens menu
@@ -66,23 +65,35 @@ func _on_timer_timeout():
 	var instanced_enemy02_01 = enemy02_01.instantiate()
 	var instanced_enemy03 = enemy03.instantiate()
 	var instanced_boss01 = boss01.instantiate()
+	var instanced_boss02 = boss02.instantiate()
+	var instanced_boss03 = boss03.instantiate()
 	
-	# get all children of main node,
-	# if one of these children are an enemy, add them to current_enemies list
-	for child in self.get_children():
-		if child.is_in_group("enemy") and !current_enemies.has(child):
-			current_enemies += [child]
-	
-	# enemies_array decides what enemies can spawn every time the timer ends
-	# rand_selected_enemy randomly selects an enemy from the array
-	var enemies_array:Array # an array of all enemies currently spawned
-	var count_for_first_boss = 5 # spawncount for first boss to spawn, idk why but i have to -1
+	var enemies_array:Array # enemies_array decides what enemies can spawn every time the timer ends
+	var count_for_first_boss = 5 # spawncount for first boss to spawn
+	var count_for_second_boss = 11
+	var count_for_third_boss = 17
+	var count_for_all_boss = 23
 	if GLOBAL.enemy_spawn_count < count_for_first_boss:
-		#enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03]
 		enemies_array = [instanced_enemy01]
-	elif GLOBAL.enemy_spawn_count >= count_for_first_boss and current_enemies.size() == 0:
+	elif GLOBAL.enemy_spawn_count == count_for_first_boss and current_enemies == 0:
 		enemies_array = [instanced_boss01]
-		print("ok...")
+	elif GLOBAL.enemy_spawn_count >= count_for_first_boss+1 and GLOBAL.enemy_spawn_count < count_for_second_boss and GLOBAL.bosses_killed == 1:
+		enemies_array = [instanced_enemy01, instanced_enemy02_01]
+	elif GLOBAL.enemy_spawn_count == count_for_second_boss and current_enemies == 0:
+		enemies_array = [instanced_boss01]
+	elif GLOBAL.enemy_spawn_count >= count_for_second_boss+1 and GLOBAL.enemy_spawn_count < count_for_third_boss and GLOBAL.bosses_killed == 2:
+		enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03]
+	elif GLOBAL.enemy_spawn_count == count_for_third_boss and current_enemies == 0:
+		enemies_array = [instanced_boss01]
+	# the loop point
+	elif  GLOBAL.enemy_spawn_count >= count_for_third_boss+1 and GLOBAL.enemy_spawn_count < count_for_all_boss and GLOBAL.bosses_killed == 3:
+		enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03]
+	elif GLOBAL.enemy_spawn_count == count_for_all_boss and current_enemies == 0:
+		enemies_array = [instanced_boss01, instanced_boss02, instanced_boss03]
+	elif GLOBAL.bosses_killed == 4:
+		# basically just need to reset variables to wherever we want to loop the game infinitely
+		GLOBAL.enemy_spawn_count = count_for_third_boss+1
+		GLOBAL.bosses_killed = 3
 	
 	if enemies_array.size() > 0:
 		var rand_selected_enemy
@@ -121,5 +132,6 @@ func _on_timer_timeout():
 				pos_y = rng.randf_range(viewport_size.y+10,viewport_size.y+50)
 		var rand_pos = Vector2(pos_x,pos_y)
 		rand_selected_enemy.position = rand_pos #set enemy position
+		rand_selected_enemy.add_to_group("current_enemies")
 		add_child(rand_selected_enemy) # spawn enemy into world as child of main scene
 		GLOBAL.enemy_spawn_count += 1

@@ -5,6 +5,7 @@ var money = 0
 var score = 0
 var kill_count = 0
 var enemy_spawn_count = 0
+var bosses_killed = 0
 
 func reset():
 	plr_hp = 5
@@ -12,6 +13,7 @@ func reset():
 	score = 0
 	kill_count = 0
 	enemy_spawn_count = 0
+	bosses_killed = 0
 
 func _input(event):
 	if event.is_action_pressed("fullscreen"): # f11 fullscreens

@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://7simkpl7t01o"]
+[gd_scene load_steps=5 format=3 uid="uid://e7tx04dm0mru"]
 
-[ext_resource type="Script" path="res://scripts/boss01.gd" id="1_yhkmi"]
-[ext_resource type="Texture2D" uid="uid://b8n2fgjjr606o" path="res://art/boss01.png" id="2_7wkif"]
-[ext_resource type="AudioStream" uid="uid://dh8rjob7vw0vl" path="res://audio/hit.wav" id="3_5m81r"]
+[ext_resource type="Script" path="res://scripts/boss01.gd" id="1_e1edw"]
+[ext_resource type="Texture2D" uid="uid://b8n2fgjjr606o" path="res://art/boss01.png" id="2_el4pl"]
+[ext_resource type="AudioStream" uid="uid://dh8rjob7vw0vl" path="res://audio/hit.wav" id="3_lfswj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 20.025
 
 [node name="Boss01" type="CharacterBody2D" groups=["enemy"]]
-script = ExtResource("1_yhkmi")
+script = ExtResource("1_e1edw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_7wkif")
+texture = ExtResource("2_el4pl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_newrt")
@@ -21,5 +21,5 @@ wait_time = 0.25
 one_shot = true
 
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_5m81r")
+stream = ExtResource("3_lfswj")
 bus = &"sfx"
