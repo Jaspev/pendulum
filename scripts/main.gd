@@ -69,10 +69,10 @@ func _on_timer_timeout():
 	var instanced_boss03 = boss03.instantiate()
 	
 	var enemies_array:Array # enemies_array decides what enemies can spawn every time the timer ends
-	var count_for_first_boss = 5 # spawncount for first boss to spawn
-	var count_for_second_boss = 11
-	var count_for_third_boss = 17
-	var count_for_all_boss = 23
+	var count_for_first_boss = 5 # how many enemies to kill for first boss to spawn
+	var count_for_second_boss = 10 + 1
+	var count_for_third_boss = 15 + 2
+	var count_for_all_boss = 20 + 3
 	if GLOBAL.enemy_spawn_count < count_for_first_boss:
 		enemies_array = [instanced_enemy01]
 	elif GLOBAL.enemy_spawn_count == count_for_first_boss and current_enemies == 0:
