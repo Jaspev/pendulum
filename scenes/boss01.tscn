@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/boss01.gd" id="1_yhkmi"]
 [ext_resource type="Texture2D" uid="uid://b8n2fgjjr606o" path="res://art/boss01.png" id="2_7wkif"]
-[ext_resource type="AudioStream" uid="uid://dh8rjob7vw0vl" path="res://audio/hit.wav" id="3_5m81r"]
+[ext_resource type="AudioStream" uid="uid://cknp1qougcuep" path="res://audio/pewhigh.wav" id="3_apu85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 20.025
@@ -20,6 +20,6 @@ shape = SubResource("CircleShape2D_newrt")
 wait_time = 0.25
 one_shot = true
 
-[node name="hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_5m81r")
+[node name="shoot_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_apu85")
 bus = &"sfx"

@@ -20,10 +20,6 @@ extends Node2D
 
 var current_enemies
 
-#DEBUG
-@onready var DEBUGspawncountui = $DEBUGspawncount
-@onready var DEBUGenemiesonscreen = $DEBUGenemesonscreen
-
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
@@ -41,10 +37,6 @@ func _process(delta):
 	
 	scoreui.text = str("SCORE: ", GLOBAL.score)
 	moneyui.text = str("MONEY: ", GLOBAL.money)
-	
-	#DEBUG
-	DEBUGspawncountui.text = str("DEBUG SPAWNCOUNT: ", GLOBAL.enemy_spawn_count)
-	DEBUGenemiesonscreen.text = str("DEBUG ENMYSONSCRN: ", current_enemies)
 
 func _input(event):
 	if event.is_action_pressed("menu"): # esc opens menu

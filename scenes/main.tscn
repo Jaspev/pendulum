@@ -200,24 +200,6 @@ offset_bottom = 33.0
 theme = ExtResource("18_vc717")
 text = "money"
 
-[node name="DEBUGspawncount" type="Label" parent="."]
-z_index = 100
-offset_left = 8.0
-offset_top = 33.0
-offset_right = 56.0
-offset_bottom = 47.0
-theme = ExtResource("18_vc717")
-text = "DEBUG  enemy_spawn_count"
-
-[node name="DEBUGenemesonscreen" type="Label" parent="."]
-z_index = 100
-offset_left = 8.0
-offset_top = 47.0
-offset_right = 195.0
-offset_bottom = 61.0
-theme = ExtResource("18_vc717")
-text = "DEBUG  # of enemies on screen"
-
 [node name="hit_enemy_small" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6ssfo")
 bus = &"sfx"
