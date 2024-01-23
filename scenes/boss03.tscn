@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cleqejq81k0kq"]
+[gd_scene load_steps=5 format=3 uid="uid://cleqejq81k0kq"]
 
 [ext_resource type="Script" path="res://scripts/boss01.gd" id="1_2kubt"]
 [ext_resource type="Texture2D" uid="uid://b8n2fgjjr606o" path="res://art/boss01.png" id="2_gs5jo"]
+[ext_resource type="AudioStream" uid="uid://cknp1qougcuep" path="res://audio/pewhigh.wav" id="3_ykk0f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_newrt"]
 radius = 20.025
@@ -18,3 +19,7 @@ shape = SubResource("CircleShape2D_newrt")
 [node name="enemy_iframes" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="shoot_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ykk0f")
+bus = &"sfx"

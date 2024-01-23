@@ -72,11 +72,11 @@ func _on_timer_timeout():
 	elif GLOBAL.enemy_spawn_count >= count_for_first_boss+1 and GLOBAL.enemy_spawn_count < count_for_second_boss and GLOBAL.bosses_killed == 1:
 		enemies_array = [instanced_enemy01, instanced_enemy02_01]
 	elif GLOBAL.enemy_spawn_count == count_for_second_boss and current_enemies == 0:
-		enemies_array = [instanced_boss01]
+		enemies_array = [instanced_boss02]
 	elif GLOBAL.enemy_spawn_count >= count_for_second_boss+1 and GLOBAL.enemy_spawn_count < count_for_third_boss and GLOBAL.bosses_killed == 2:
 		enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03]
 	elif GLOBAL.enemy_spawn_count == count_for_third_boss and current_enemies == 0:
-		enemies_array = [instanced_boss01]
+		enemies_array = [instanced_boss03]
 	# the loop point
 	elif  GLOBAL.enemy_spawn_count >= count_for_third_boss+1 and GLOBAL.enemy_spawn_count < count_for_all_boss and GLOBAL.bosses_killed == 3:
 		enemies_array = [instanced_enemy01, instanced_enemy02_01, instanced_enemy03]
@@ -90,40 +90,17 @@ func _on_timer_timeout():
 	if enemies_array.size() > 0:
 		var rand_selected_enemy
 		rand_selected_enemy = enemies_array[randi() % enemies_array.size()]
-		# Randomly choose enemy spawn position. Probably a way better way to do this but this works.
-		var coin
-		var pos_x
-		var pos_y
-		randomize() # I don't think i need to call randomize this much but i'm too lazy to test if I do or don't
-		coin = rng.randf_range(-1,1)
-		if coin >= 0: #IF POSITIVE, SET ENEMY POS ON EITHER LEFT OF RIGHT
-			randomize()
-			coin = rng.randf_range(-1,1)
-			if coin >= 0: #IF POSITIVE, SET ENEMY POS ON LEFT
-				randomize()
-				pos_x = rng.randf_range(-50,-10)
-				randomize()
-				pos_y = rng.randf_range(-50,viewport_size.y+50)
-			else: #IF NEGATIVE, SET ENEMY POS ON RIGHT
-				randomize()
-				pos_x = rng.randf_range(viewport_size.x+10,viewport_size.x+50)
-				randomize()
-				pos_y = rng.randf_range(-50,viewport_size.y+50)
-		else: #IF NEGATIVE, SET ENEMY POS ON EITHER TOP OR BOTTOM
-			randomize()
-			coin = rng.randf_range(-1,1)
-			if coin >= 0: #IF POSITIVE, SET ENEMY POS ON TOP
-				randomize()
-				pos_x = rng.randf_range(-50,viewport_size.x+50)
-				randomize()
-				pos_y = rng.randf_range(-50,-10)
-			else: #IF NEGATIVE, SET ENEMY POS ON BOTTOM
-				randomize()
-				pos_x = rng.randf_range(-50,viewport_size.x+50)
-				randomize()
-				pos_y = rng.randf_range(viewport_size.y+10,viewport_size.y+50)
-		var rand_pos = Vector2(pos_x,pos_y)
-		rand_selected_enemy.position = rand_pos #set enemy position
+		
+		# Randomly choose enemy spawn position within margin outside of screen.
+		var margin_min = 20
+		var margin_max = 75
+		var pos_x = rng.randi_range(-margin_max, viewport_size.x + margin_max)
+		var pos_y = rng.randi_range(-margin_max, viewport_size.y + margin_max)
+		# make sure pos is not within the screen, if either are: reroll both
+		while pos_x >= -margin_min and pos_x <= viewport_size.x+margin_min and pos_y >= -margin_min and pos_y <= viewport_size.y+margin_min:
+			pos_x = rng.randi_range(-margin_max, viewport_size.x + margin_max)
+			pos_y = rng.randi_range(-margin_max, viewport_size.y + margin_max)
+		rand_selected_enemy.position = Vector2(pos_x,pos_y) #set enemy position
 		rand_selected_enemy.add_to_group("current_enemies")
 		add_child(rand_selected_enemy) # spawn enemy into world as child of main scene
 		GLOBAL.enemy_spawn_count += 1
