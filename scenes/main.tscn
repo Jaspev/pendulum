@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqsujp6ltw8lw"]
+[gd_scene load_steps=35 format=3 uid="uid://bqsujp6ltw8lw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2j1ml"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_wd24r"]
@@ -17,7 +17,9 @@
 [ext_resource type="Script" path="res://scripts/flailballsmallcollision.gd" id="12_hmybx"]
 [ext_resource type="Script" path="res://scripts/chain2.gd" id="13_0372c"]
 [ext_resource type="Script" path="res://scripts/flailballbigcollision.gd" id="13_ot8ce"]
+[ext_resource type="Script" path="res://scripts/pausemenu.gd" id="17_j0rya"]
 [ext_resource type="AudioStream" uid="uid://c3rvm076yy7ex" path="res://audio/hit_enemy_small.wav" id="18_6ssfo"]
+[ext_resource type="Script" path="res://scripts/PauseButtonResume.gd" id="18_dpqm8"]
 [ext_resource type="Theme" uid="uid://hn10mff0bn8n" path="res://themes/main_theme.tres" id="18_vc717"]
 [ext_resource type="AudioStream" uid="uid://3ji10lc22unn" path="res://audio/hit_enemy_big.wav" id="19_nt8h7"]
 [ext_resource type="AudioStream" uid="uid://cahr3g0vt6ry1" path="res://audio/hit_player.wav" id="19_o8okv"]
@@ -173,6 +175,45 @@ script = ExtResource("13_ot8ce")
 [node name="flailballbigrealcollision" type="CollisionShape2D" parent="flailballbigArea2D"]
 shape = SubResource("CircleShape2D_8dfvx")
 
+[node name="pausemenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+script = ExtResource("17_j0rya")
+
+[node name="MarginContainer" type="MarginContainer" parent="pausemenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -79.0
+offset_right = 149.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="pausemenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="pausemenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "if you're seeing this the game 
+should be paused like 
+straight up fr fr"
+
+[node name="ButtonResume" type="Button" parent="pausemenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "resume"
+script = ExtResource("18_dpqm8")
+
 [node name="PlayerHPUI" type="TextureRect" parent="."]
 z_index = 100
 offset_left = 298.0
@@ -223,3 +264,4 @@ bus = &"sfx"
 
 [connection signal="body_entered" from="flailballsmallArea2D" to="flailballsmallArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="flailballbigArea2D" to="flailballbigArea2D" method="_on_body_entered"]
+[connection signal="pressed" from="pausemenu/MarginContainer/HBoxContainer/ButtonResume" to="pausemenu/MarginContainer/HBoxContainer/ButtonResume" method="_on_pressed"]

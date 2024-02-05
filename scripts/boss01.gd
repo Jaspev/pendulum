@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var coin_preload = preload("res://scenes/coin.tscn")
 
 var speed = 15
-var hp = 20
+var hp = 50
 var points = 100
 
 var gun_rot_speed = rad_to_deg(1) # 30 degrees per second

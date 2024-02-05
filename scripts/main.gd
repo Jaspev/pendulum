@@ -14,6 +14,7 @@ extends Node2D
 @onready var boss03 = preload("res://scenes/boss03.tscn")
 
 #ui
+@onready var pauseui = $pausemenu
 @onready var plrhpui = $PlayerHPUI
 @onready var scoreui = $score
 @onready var moneyui = $money
@@ -39,10 +40,10 @@ func _process(delta):
 	moneyui.text = str("MONEY: ", GLOBAL.money)
 
 func _input(event):
-	if event.is_action_pressed("menu"): # esc opens menu
-		get_tree().change_scene_to_file("res://scenes/title.tscn")
+	if event.is_action_pressed("menu"): # esc
+		pauseui.pause_open()
 		
-	if event.is_action_pressed("shop"): # tab opens shop
+	if event.is_action_pressed("shop"): # tab
 		get_tree().change_scene_to_file("res://scenes/shop.tscn")
 	
 	# DEBUG put whatever you wanna debug here whenever you press "D"

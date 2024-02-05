@@ -1,5 +1,38 @@
-in order of importance
+difficulty settings maybe? 
+	difficulty changes these things:
+		enemy spawn rate
+		enemy speed
+		enemy health
+		points given by enemies
+		coin speed
 
-pendulum for player
-ui for currency/hp
-enemies drop/give currency
+different modes maybe?
+	mode where it's just shooty enemies
+	mode where it's just bosses
+	mode where you have 1hp
+	mode where coins hurt you
+
+pause screen
+	pauses game and overlays what's on the menu screen
+	volume sliders
+	quit game
+	quit to menu
+	hotkeys
+
+shop
+	upgrades:
+		spiky ball: increase pendulum damage
+		extra pendulum point
+		max hp increase
+		make flail bigger?
+
+sfx
+	convert current sfx to .ogg
+
+bosses
+	boss with flail
+	boss with hands that fly at you like the bosses in every nintendo game
+
+death anim/cutscene/thing for player so it doesn't just snap to death screen suddenly
+
+If we want to do more, we could just add more bosses/enemies/upgrades if we think of any ideas. 
